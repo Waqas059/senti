@@ -599,7 +599,7 @@ RULES:
         res = _httpx.post(
             "https://api.groq.com/openai/v1/chat/completions",
             headers={"Authorization": f"Bearer {groq_key}", "Content-Type": "application/json"},
-            json={"model": "llama-3.3-70b-versatile", "messages": [{"role": "system", "content": context}] + [{"role": m["role"], "content": m["content"]} for m in history] + [{"role": "user", "content": question}], "max_tokens": 600, "temperature": 0.2},
+            json={"model": "openai/gpt-oss-120b", "messages": [{"role": "system", "content": context}] + [{"role": m["role"], "content": m["content"]} for m in history] + [{"role": "user", "content": question}], "max_tokens": 600, "temperature": 0.2},
             timeout=30
         )
         answer = res.json()["choices"][0]["message"]["content"]
@@ -641,7 +641,7 @@ Reply with ONLY the comma-separated keywords, nothing else. No explanation."""
             r = await client.post(
                 "https://api.groq.com/openai/v1/chat/completions",
                 headers={"Authorization": f"Bearer {groq_key}", "Content-Type": "application/json"},
-                json={"model": "llama-3.3-70b-versatile", "messages": [{"role": "user", "content": prompt}], "max_tokens": 100, "temperature": 0.3}
+                json={"model": "openai/gpt-oss-120b", "messages": [{"role": "user", "content": prompt}], "max_tokens": 100, "temperature": 0.3}
             )
             keywords = r.json()["choices"][0]["message"]["content"].strip()
             return {"keywords": keywords}
@@ -1025,7 +1025,7 @@ async def analyze_sentiment_competitor(text: str):
             r = await client.post(
                 "https://api.groq.com/openai/v1/chat/completions",
                 headers={"Authorization": f"Bearer {groq_key}", "Content-Type": "application/json"},
-                json={"model": "llama-3.3-70b-versatile", "messages": [{"role": "user", "content": f"Classify sentiment as positive, negative, or neutral. Reply with only one word.\n\nText: {text[:300]}"}], "max_tokens": 5, "temperature": 0}
+                json={"model": "openai/gpt-oss-120b", "messages": [{"role": "user", "content": f"Classify sentiment as positive, negative, or neutral. Reply with only one word.\n\nText: {text[:300]}"}], "max_tokens": 5, "temperature": 0}
             )
             word = r.json()["choices"][0]["message"]["content"].strip().lower()
             if "positive" in word: return "positive", 0.8
