@@ -255,7 +255,7 @@ def get_businesses(current_user: User = Depends(get_current_user), db: Session =
 # ── Mention Routes ────────────────────────────────────────────────────────────
 
 @app.get("/businesses/{business_id}/mentions", response_model=List[MentionOut])
-def get_mentions(business_id: int, sentiment: Optional[str] = None, is_resolved: Optional[bool] = None, limit: int = 100, currepends(get_current_user), db: Session = Depends(get_db)):
+def get_mentions(business_id: int, sentiment: Optional[str] = None, is_resolved: Optional[bool] = None, limit: int = 100, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     biz = db.query(Business).filter(Business.id == business_id, Business.user_id == current_user.id).first()
     if not biz:
         raise HTTPException(status_code=404, detail="Business not found")
