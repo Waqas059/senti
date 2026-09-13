@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@media (max-width: 768px) {
+  /* Hide sidebar on mobile, show top nav instead */
+  .app-sidebar { display: none !important; }
+  
+  /* Full width content */
+  .app-main { width: 100vw !important; }
+  
+  /* Stack metric cards 2 per row */
+  .metrics-grid { 
+    display: grid !important; 
+    grid-template-columns: 1fr 1fr !important; 
+    gap: 8px !important; 
+  }
+  
+  /* Stack two column layouts */
+  .two-col-grid { 
+    grid-template-columns: 1fr !important; 
+  }
+  
+  /* Hide right intelligence panel on mobile */
+  .right-panel { display: none !important; }
+  
+  /* Full width cards */
+  .card { border-radius: 8px !important; }
+  
+  /* Smaller text on mobile */
+  .metric-value { font-size: 22px !important; }
+  
+  /* Stack filter bars */
+  .filter-bar { flex-direction: column !important; gap: 8px !important; }
+  
+  /* Login page full width */
+  .login-left-panel { display: none !important; }
+  .login-right-panel { padding: 24px !important; }
+}

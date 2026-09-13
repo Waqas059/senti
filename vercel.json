@@ -1,0 +1,16 @@
+{
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/build",
+  "framework": "create-react-app",
+  "functions": {
+    "api/index.py": { "maxDuration": 30 },
+    "api/cron/listener.py": { "maxDuration": 60 }
+  },
+  "crons": [
+    { "path": "/api/cron/listener", "schedule": "0 * * * *" }
+  ],
+  "rewrites": [
+    { "source": "/api/cron/:path*", "destination": "/api/cron/listener.py" },
+    { "source": "/api/:path*", "destination": "/api/index.py" }
+  ]
+}
