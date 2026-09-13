@@ -7,7 +7,7 @@
     "api/cron/listener.py": { "maxDuration": 60 }
   },
   "crons": [
-    { "path": "/api/cron/listener", "schedule": "0 * * * *" }
+    { "path": "/api/cron/listener", "schedule": "0 9 * * *" }
   ],
   "rewrites": [
     { "source": "/api/cron/:path*", "destination": "/api/cron/listener.py" },
