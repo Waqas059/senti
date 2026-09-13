@@ -255,7 +255,7 @@ def get_businesses(current_user: User = Depends(get_current_user), db: Session =
 # ── Mention Routes ────────────────────────────────────────────────────────────
 
 @app.get("/businesses/{business_id}/mentions", response_model=List[MentionOut])
-def get_mentions(business_id: int, sentiment: Optional[str] = None, is_resolved: Optional[bool] = None, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+def get_mentions(business_id: int, sentiment: Optional[str] = None, is_resolved: Optional[bool] = None, limit: int = 100, currepends(get_current_user), db: Session = Depends(get_db)):
     biz = db.query(Business).filter(Business.id == business_id, Business.user_id == current_user.id).first()
     if not biz:
         raise HTTPException(status_code=404, detail="Business not found")
@@ -264,7 +264,7 @@ def get_mentions(business_id: int, sentiment: Optional[str] = None, is_resolved:
         query = query.filter(Mention.sentiment == sentiment)
     if is_resolved is not None:
         query = query.filter(Mention.is_resolved == is_resolved)
-    return query.order_by(Mention.fetched_at.desc()).limit(100).all()
+    return query.order_by(Mention.fetched_at.desc()).limit(limit).all()
 
 @app.patch("/mentions/{mention_id}/resolve")
 def resolve_mention(mention_id: int, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
