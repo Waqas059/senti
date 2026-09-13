@@ -1986,7 +1986,7 @@ function Dashboard({ user, business, onLogout }) {
       const [sRes, mRes, allRes] = await Promise.all([
         api.get(`/businesses/${business.id}/stats`),
         api.get(`/businesses/${business.id}/mentions${filter !== 'all' ? `?sentiment=${filter}&limit=${mentionLimit}` : `?limit=${mentionLimit}`}`),
-        api.get(`/businesses/${business.id}/mentions`),
+        api.get(`/businesses/${business.id}/mentions?limit=10000`),
       ]);
       setStats(sRes.data); setMentions(mRes.data); setAllMentions(allRes.data);
     } catch {}
