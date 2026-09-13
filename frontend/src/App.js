@@ -2054,7 +2054,7 @@ export default function App() {
   const loadUser = async () => {
     try {
       const uRes = await api.get('/auth/me'); setUser(uRes.data);
-      if (uRes.data.is_admin) { localStorage.removeItem('token'); setScreen('login'); return; }
+      if (uRes.data.is_admin) { localStorage.removeItem('token'); window.location.href = '/admin'; return; }
       const bRes = await api.get('/businesses');
       if (bRes.data.length > 0) { setBusiness(bRes.data[0]); setScreen('dashboard'); }
       else setScreen('onboarding');
