@@ -748,7 +748,7 @@ async def invite_team_member(business_id: int, data: dict, current_user: User = 
                     </div>
                     <div style="background:#fff;padding:20px;border:1px solid #e5e7eb;border-radius:0 0 8px 8px">
                         <p style="font-size:15px;color:#111">{current_user.full_name or current_user.email} has invited you to join <strong>{biz.name}</strong> on Senti as a <strong>{role}</strong>.</p>
-                        <a href="https://senti-app-chi.vercel.app/signup" style="background:#7C3AED;color:white;padding:10px 20px;border-radius:6px;text-decoration:none;display:inline-block;margin:15px 0">Accept invitation</a>
+                        <a href="https://senti-community.vercel.app/signup" style="background:#7C3AED;color:white;padding:10px 20px;border-radius:6px;text-decoration:none;display:inline-block;margin:15px 0">Accept invitation</a>
                         <p style="color:#6b7280;font-size:13px">Sign up with this email address ({email}) to join the team.</p>
                     </div>
                     </div>"""
