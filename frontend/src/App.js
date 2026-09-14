@@ -1737,7 +1737,7 @@ function AdminPanel() {
   const [editingKeywords, setEditingKeywords] = useState({});
   const [scanningBiz, setScanningBiz] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
-  const aH = (t) => ({ headers: { Authorization: `Bearer ${t || adminToken}` } });
+const aH = (t) => ({ headers: { Authorization: `Bearer ${t || adminToken}` } }); useEffect(() => { const at = localStorage.getItem('token'); if (!at) return; (async () => { try { const me = await api.get('/auth/me'); if (me.data.is_admin) { setAdminToken(at); await loadData(at); setAuthed(true); } } catch {} })(); }, []);
 
   const loadData = async (t) => {
     const tk = t || adminToken;
@@ -2054,7 +2054,7 @@ export default function App() {
   const loadUser = async () => {
     try {
       const uRes = await api.get('/auth/me'); setUser(uRes.data);
-      if (uRes.data.is_admin) { localStorage.removeItem('token'); window.location.href = '/admin'; return; }
+      if (uRes.data.is_admin) { window.location.href = '/admin'; return; }
       const bRes = await api.get('/businesses');
       if (bRes.data.length > 0) { setBusiness(bRes.data[0]); setScreen('dashboard'); }
       else setScreen('onboarding');
