@@ -283,7 +283,7 @@ def run_ai_agent(business, db):
                                         <p style="font-weight:600;color:#DC2626;margin:0 0 5px">[{mention.source}] - Score: {round((mention.sentiment_score or 0.5)*100)}/100</p>
                                         <p style="color:#374151;margin:0">{mention.content[:300]}</p>
                                     </div>
-                                    <a href="https://sentiapp.duckdns.org" style="background:#7C3AED;color:white;padding:10px 20px;border-radius:6px;text-decoration:none;display:inline-block">Review in Senti</a>
+                                    <a href="https://senti-app-chi.vercel.app" style="background:#7C3AED;color:white;padding:10px 20px;border-radius:6px;text-decoration:none;display:inline-block">Review in Senti</a>
                                 </div>
                                 </div>"""
                             }, timeout=10
