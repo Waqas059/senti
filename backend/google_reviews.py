@@ -116,5 +116,6 @@ def fetch_google_reviews(business, db, analyze_sentiment, Mention, send_negative
             count += 1
         return count
     except Exception as e:
+        db.rollback()
         print(f"Google Reviews error: {e}")
         return 0

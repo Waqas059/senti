@@ -61,6 +61,7 @@ def fetch_appstore_reviews(business, db, analyze_sentiment, Mention, send_negati
                     send_negative_alert(business, mention)
                 count += 1
             except Exception as e:
+                db.rollback()
                 print(f"App Store entry error: {e}")
     except Exception as e:
         print(f"App Store fetch error: {e}")
@@ -116,6 +117,7 @@ def fetch_playstore_reviews(business, db, analyze_sentiment, Mention, send_negat
                     send_negative_alert(business, mention)
                 count += 1
             except Exception as e:
+                db.rollback()
                 print(f"Play Store entry error: {e}")
     except Exception as e:
         print(f"Play Store fetch error: {e}")
@@ -174,6 +176,7 @@ def fetch_trustpilot_reviews(business, db, analyze_sentiment, Mention, send_nega
                     send_negative_alert(business, mention)
                 count += 1
             except Exception as e:
+                db.rollback()
                 print(f"Trustpilot entry error: {e}")
     except Exception as e:
         print(f"Trustpilot fetch error: {e}")

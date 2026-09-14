@@ -209,6 +209,7 @@ def fetch_reddit_rss(business, db):
                         send_negative_alert(business, mention)
                     count += 1
             except Exception as e:
+                db.rollback()
                 print(f"RSS error for {keyword}: {e}")
         return count
     except Exception as e:
